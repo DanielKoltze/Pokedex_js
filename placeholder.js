@@ -1,63 +1,30 @@
 const pokecontainer = document.getElementById("pokemon_container1");
-const pokemonsIWant = 10; //hvor mange pokemons der hentes ind -1
+const pokemonsIWant = 270; //hvor mange pokemons der hentes ind -1
 let pokemonsArray = [];
-let pokemon;
 
-let getPokemons = function(id){
+
+const getPokemons = function(id){
     const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
     // ved ikke helt hvordan fetch virker, men vi holder det bare sådan
     fetch(url)
      .then(response => response.json())
      .then(data => {
          //den data vi gerne vil have fat i
-        pokemon = {
+        const pokemon = {
             name:data.name,
             id:data.id,
             image:data.sprites['front_default']
             
         }
         pokemonsArray.push(pokemon);
-        //displayPokemon(pokemon);
+        displayPokemon(pokemon);
      }   
      
 
      )
      
 }
-
-/*
-pokemon = {
-name:'hej',
-id:'1',
-image:'string'
-}
-let asd = () =>{
-for (let index = 0; index < 3; index++) {
-    const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-    // ved ikke helt hvordan fetch virker, men vi holder det bare sådan
-    fetch(url)
-     .then(response => response.json())
-     .then(data => {
-         //den data vi gerne vil have fat i
-        pokemon = {
-            name:'hej',     //data.name,
-            id:'1',     //data.id,
-            image:'hej'  //data.sprites['front_default']
-            
-        }
-        pokemonsArray.push(pokemon);
-}
-}
-}
-*/
-console.log(pokemonsArray);
-console.log('length: ' + pokemonsArray.length);
-
     
-
-
-
-
     const displayPokemon = function(pokemon){
         // laver en div til hver og adder class navn til den div
         var pokemonEl = document.createElement('div');
@@ -80,7 +47,7 @@ console.log('length: ' + pokemonsArray.length);
     }
 
     //adder til listen. Må kun køres en gang
-    const getAllPokemons = () => {
+    const getAllPokemons = function(){
         for(var i = 1; i < pokemonsIWant; i++){
             getPokemons(i)
         }
@@ -102,7 +69,7 @@ console.log('length: ' + pokemonsArray.length);
 
 
     const search = document.getElementById('search_bar');
-    
+    console.log(search);
 
 
     search.addEventListener('keyup', (e) => {
@@ -118,33 +85,4 @@ console.log('length: ' + pokemonsArray.length);
     });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    const displayPokemonFromArray = ar => {
-       
-        ar.forEach(element => {
-            
-        });
-    }
-    
-
-    displayPokemonFromArray(pokemonsArray);
-
-    
-    //console.log(Object.keys(pokemonsArray).length);
  
