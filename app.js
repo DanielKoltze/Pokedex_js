@@ -1,7 +1,49 @@
 const pokecontainer = document.getElementById("pokemon_container1");
-const pokemonsIWant = 10; //hvor mange pokemons der hentes ind -1
+const pokemonsIWant = 400; //hvor mange pokemons der hentes ind -1
 let pokemonsArray = [];
-let pokemon;
+
+
+
+
+let addAllPokemonsToList = async () =>{
+    let poke = null;
+    for (let index = 1; index < pokemonsIWant; index++) {
+        const url = `https://pokeapi.co/api/v2/pokemon/${index}`
+        
+        var xd = fetch(url)
+
+        var res = await xd.json()
+
+
+
+
+
+        fetch(url)
+        .then(function(response) {
+            return response.json();
+            })
+            .then(function(data) {
+            poke = {
+                name:data.name
+            }
+            .then( () => {pokemonsArray.push(poke)})   
+            console.log(poke)
+            
+
+    })
+    
+    
+        
+        
+    
+}
+
+}
+
+
+addAllPokemonsToList();
+console.log(pokemonsArray);
+console.log('length: ' + pokemonsArray.length);
 
 let getPokemons = function(id){
     const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
@@ -24,6 +66,7 @@ let getPokemons = function(id){
      )
      
 }
+
 
 /*
 pokemon = {
@@ -50,8 +93,7 @@ for (let index = 0; index < 3; index++) {
 }
 }
 */
-console.log(pokemonsArray);
-console.log('length: ' + pokemonsArray.length);
+
 
     
 
@@ -87,7 +129,7 @@ console.log('length: ' + pokemonsArray.length);
 
     }
 
-    getAllPokemons();
+  
     
    
     /*
